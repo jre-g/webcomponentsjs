@@ -71,3 +71,13 @@ Everything in this repository is BSD style license unless otherwise specified.
 
 Copyright (c) 2015 The Polymer Authors. All rights reserved.
 
+## Known Issues
+
+  * [Custom element's constructor property is unreliable](#constructor)
+
+### Custom element's constructor property is unreliable <a id="constructor"></a>
+See #215 for background.
+
+In Safari and IE, instances of Custom Elements have a `constructor` property of `HTMLUnknownElementConstructor` and `HTMLUnknownElement`, respectively. It's unsafe to rely on this property for checking element types.
+
+It's worth noting that `customElement.__proto__.__proto__.constructor` is `HTMLElementPrototype` and that the prototype chain isn't modified by the polyfills(onto `ElementPrototype`, etc.)
