@@ -74,6 +74,7 @@ Copyright (c) 2015 The Polymer Authors. All rights reserved.
 ## Known Issues
 
   * [Custom element's constructor property is unreliable](#constructor)
+  * [Contenteditable elements do not trigger MutationObserver](#contentedit)
   * [ShadowCSS: :host-context(...):host(...) doesn't work](#hostcontext)
 
 ### Custom element's constructor property is unreliable <a id="constructor"></a>
@@ -83,7 +84,11 @@ In Safari and IE, instances of Custom Elements have a `constructor` property of 
 
 It's worth noting that `customElement.__proto__.__proto__.constructor` is `HTMLElementPrototype` and that the prototype chain isn't modified by the polyfills(onto `ElementPrototype`, etc.)
 
-### ShadowCSS: :host-context(...):host(...) doesn't work <a id=hostcontext></a>
+### Contenteditable elements do not trigger MutationObserver <a id="contentedit"></a>
+Using the MutationObserver polyfill, it isn't possible to monitor mutations of an element marked `contenteditable`.
+See [the mailing list](https://groups.google.com/forum/#!msg/polymer-dev/LHdtRVXXVsA/v1sGoiTYWUkJ)
+
+### ShadowCSS: :host-context(...):host(...) doesn't work <a id="hostcontext"></a>
 See #16 for background.
 
 Under the shadow DOM polyfill, rules like:
