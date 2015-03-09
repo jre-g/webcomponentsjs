@@ -83,7 +83,7 @@ In Safari and IE, instances of Custom Elements have a `constructor` property of 
 
 It's worth noting that `customElement.__proto__.__proto__.constructor` is `HTMLElementPrototype` and that the prototype chain isn't modified by the polyfills(onto `ElementPrototype`, etc.)
 
-### ShadowCSS: :host-context(...):host(...) doesn't work <a id=#hostcontext></a>
+### ShadowCSS: :host-context(...):host(...) doesn't work <a id=hostcontext></a>
 See #16 for background.
 
 Under the shadow DOM polyfill, rules like:
