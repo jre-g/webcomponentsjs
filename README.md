@@ -74,6 +74,7 @@ Copyright (c) 2015 The Polymer Authors. All rights reserved.
 ## Known Issues
 
   * [Custom element's constructor property is unreliable](#constructor)
+  * [ShadowCSS: :host-context(...):host(...) doesn't work](#hostcontext)
 
 ### Custom element's constructor property is unreliable <a id="constructor"></a>
 See #215 for background.
@@ -81,3 +82,16 @@ See #215 for background.
 In Safari and IE, instances of Custom Elements have a `constructor` property of `HTMLUnknownElementConstructor` and `HTMLUnknownElement`, respectively. It's unsafe to rely on this property for checking element types.
 
 It's worth noting that `customElement.__proto__.__proto__.constructor` is `HTMLElementPrototype` and that the prototype chain isn't modified by the polyfills(onto `ElementPrototype`, etc.)
+
+### ShadowCSS: :host-context(...):host(...) doesn't work <a id=#hostcontext></a>
+See #16 for background.
+
+Under the shadow DOM polyfill, rules like:
+```
+:host-context(.foo):host(.bar) {...}
+```
+don't work, despite working under native Shadow DOM. The solution is to use `polyfill-next-selector` like:
+
+```
+polyfill-next-selector { content: '.foo :host.bar, :host.foo.bar'; }
+```
