@@ -18,6 +18,15 @@
   "bugs": {
     "url": "https://github.com/webcomponents/webcomponentsjs/issues"
   },
+  "testling": {
+    "harness": "mocha-tdd",
+    "html": "tests/runner.html",
+    "browsers": [
+      "ie/10..latest",
+      "chrome/latest",
+      "firefox/latest"
+    ]
+  },
   "homepage": "http://webcomponents.org",
   "devDependencies": {
     "gulp": "^3.8.8",
